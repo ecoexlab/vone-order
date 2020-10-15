@@ -9,6 +9,7 @@
           range: 'ORDER DATA!A:L',
         }, (err, res) => {
           if (err){
+            console.log(err)
             return failed(err) 
           }
           const rows = res.data.values
@@ -29,6 +30,9 @@
         })
       })
     }
+
+
+
     exports.retrieveUsers = (req, res) => {
       authentication.authenticated()
       .then((auth) => {

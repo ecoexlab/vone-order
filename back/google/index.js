@@ -38,6 +38,7 @@ class Authentication {
           // Check if we have previously stored a token.
           fs.readFile(TOKEN_PATH, (err, token) => {
             if (err) {
+              console.log(err)
               this.getNewToken(oAuth2Client)
               .then((oAuth2ClientNew) => {
                 success(oAuth2ClientNew)
@@ -61,7 +62,7 @@ class Authentication {
   getNewToken(oAuth2Client, callback) {
     return new Promise((success, failed) => {
       const authUrl = oAuth2Client.generateAuthUrl({
-        access_type: 'offline',
+        access_type: 'online',
         scope: SCOPES,
       })
       console.log('Authorize this app by visiting this url:', authUrl)
